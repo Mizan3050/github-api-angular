@@ -1,17 +1,22 @@
 <div class="repositories">
-  <p *ngIf="githubProfile$ | async as githubProfile">
+  <p *ngIf="githubProfile$ | async as githubProfile" class="clickable link" [routerLink]="['/'+githubProfile.login]" routerLinkActive="router-link-active" >
     {{ githubProfile.login }}
   </p>
   <h2>Repositories</h2>
   <ng-container *ngIf="githubRepositories$ | async as githubRepositories">
-    <div
-      class="repository-detail"
-      *ngFor="let githubRepository of githubRepositories"
-    >
-      <h4>{{ githubRepository.name }}</h4>
-      <div class="detail">
-        <span> {{ githubRepository.stargazers_count }} </span>
-        <span>{{ githubRepository.language }}</span>
+    <div class="repository-list">
+      <div
+        class="repository-detail"
+        *ngFor="let githubRepository of githubRepositories"
+      >
+        <h4>{{ githubRepository.name }}</h4>
+        <div class="detail">
+          <span class="stargazer"
+            ><img [src]="startIcon" />
+            <p>{{ githubRepository.stargazers_count }}</p>
+          </span>
+          <span>{{ githubRepository.language }}</span>
+        </div>
       </div>
     </div>
   </ng-container>
