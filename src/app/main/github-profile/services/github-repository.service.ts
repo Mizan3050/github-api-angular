@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile';
 import { GithubApiService } from './github-api.service'
 
@@ -18,13 +18,20 @@ export class GithubRepositoryService {
   ) { }
 
   getGithubProfile(username: string): Observable<GithubProfile> {
-    return this.githubApiService.getGithubProfile(username).pipe(
-      tap((githubProfile) => {
-        if (githubProfile) {
-          this.githubProfile.next(githubProfile);
-        }
-      })
-    );
+    if (username === this.githubProfile.value?.login) {
+      return this.githubProfile$
+    } else {
+      return this.githubApiService.getGithubProfile(username).pipe(
+        tap((githubProfile) => {
+          if (githubProfile) {
+            this.githubProfile.next(githubProfile);
+          }
+        }),
+        catchError(() => {
+          return of(null);
+        })
+      );
+    }
   }
 
   getListOfRepositories(): Observable<any> {

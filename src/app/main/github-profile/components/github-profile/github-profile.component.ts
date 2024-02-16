@@ -13,10 +13,9 @@ import { GithubRepositoryService } from 'src/app/main/github-profile/services/gi
   templateUrl: './github-profile.component.html',
   styleUrls: ['./github-profile.component.scss']
 })
-export class GithubProfileComponent implements OnInit {
+export class GithubProfileComponent{
 
   username: string = '';
-  profileLoading = true;
   profileIcon = '/assets/images/icons/icons8-test-account-30.png'
   repoIcon = '/assets/images/icons/icons8-bookmark-48.png'
 
@@ -28,19 +27,7 @@ export class GithubProfileComponent implements OnInit {
     this.username = this.route.snapshot.paramMap.get('username');
   }
 
-  github$: Observable<GithubProfile> = of(null);
-
-  ngOnInit() {
-    this.github$ = this.githubRepositoryService.getGithubProfile(this.username).pipe(
-      tap(() => {
-        this.profileLoading = false;
-      }),
-      catchError(() => {
-        this.profileLoading = false;
-        return of(null)
-      })
-    );
-  }
+  github$ = this.githubRepositoryService.githubProfile$;
 
   navigateToRepositoryList() {
     this.router.navigate([this.username, 'repositories'])
