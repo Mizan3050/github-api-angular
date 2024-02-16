@@ -37,7 +37,7 @@ export class RepositoriesComponent {
 
   githubRepositories$: Observable<Repository[]> = merge(this.pageIndex.asObservable()).pipe(
     switchMap((pageIndex) => {
-      console.log(pageIndex);
+      this.repositoriesLoading = true;
       return this.githubRepositoryService.getListOfRepositories(pageIndex).pipe(
         tap(() => {
           this.repositoriesLoading = false;

@@ -1,5 +1,5 @@
 <div class="main-container">
-  <div class="repositories">
+  <div class="repositories" [class.d-none]="repositoriesLoading">
     <p
       *ngIf="githubProfile$ | async as githubProfile"
       class="clickable link"
@@ -28,7 +28,7 @@
       </div>
     </ng-container>
   </div>
-  <div class="paginator">
+  <div class="paginator" [class.d-none]="repositoriesLoading">
     <button (click)="previousPage()">Previous</button>
     <button (click)="nextPage()">Next</button>
   </div>
