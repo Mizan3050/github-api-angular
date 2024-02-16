@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'github-api-angular';
+
+  constructor(private http: HttpClient) {
+
+  }
+  github$ = this.http.get('https://api.github.com/users/someone')
 }
