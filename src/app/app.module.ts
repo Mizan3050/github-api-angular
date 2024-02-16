@@ -8,6 +8,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { GithubProfileComponent } from 'src/app/main/github-profile/components/github-profile/github-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSlideToggleModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    GithubProfileComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,9 +9,4 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'github-api-angular';
-
-  constructor(private http: HttpClient) {
-
-  }
-  github$: Observable<any> = this.http.get('https://api.github.com/users/mizan3050') as Observable<any>;
 }
