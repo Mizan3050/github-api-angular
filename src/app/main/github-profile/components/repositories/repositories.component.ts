@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { GithubRepositoryService } from 'src/app/main/github-profile/services/github-repository.service';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-repositories',
@@ -12,8 +14,14 @@ import { ActivatedRoute } from '@angular/router';
 export class RepositoriesComponent {
 
   constructor(
-    private route: ActivatedRoute
+    private githubRepositoryService: GithubRepositoryService
   ) {
-    console.log(this.route.snapshot.paramMap.get('username'));
+
   }
+
+  githubRepositories$ = this.githubRepositoryService.getListOfRepositories().pipe(
+    catchError(() => {
+      return of([])
+    })
+  );
 }

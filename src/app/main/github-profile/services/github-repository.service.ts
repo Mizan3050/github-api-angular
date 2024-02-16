@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile';
@@ -12,7 +13,8 @@ export class GithubRepositoryService {
   githubProfile$ = this.githubProfile.asObservable();
 
   constructor(
-    private githubApiService: GithubApiService
+    private githubApiService: GithubApiService,
+    private http: HttpClient
   ) { }
 
   getGithubProfile(username: string): Observable<GithubProfile> {
@@ -23,5 +25,9 @@ export class GithubRepositoryService {
         }
       })
     );
+  }
+
+  getListOfRepositories(): Observable<any> {
+    return this.http.get<any>(this.githubProfile.value?.repos_url)
   }
 }
