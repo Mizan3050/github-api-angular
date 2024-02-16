@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,5 @@ export class AppComponent {
   constructor(private http: HttpClient) {
 
   }
-  github$ = this.http.get('https://api.github.com/users/mizan3050')
+  github$: Observable<any> = this.http.get('https://api.github.com/users/mizan3050') as Observable<any>;
 }
