@@ -1,29 +1,31 @@
-<ng-container *ngIf="github$ | async as github">
-  <div class="github-profile">
-    <div class="avatar">
-      <img [src]="github.avatar_url" [alt]="github.login" />
-      <div class="name">
-        <h2>{{ github.name }}</h2>
-        <p>{{ github.login }}</p>
+<div class="main-container">
+  <ng-container *ngIf="github$ | async as github">
+    <div class="github-profile">
+      <div class="avatar">
+        <img [src]="github.avatar_url" [alt]="github.login" />
+        <div class="name">
+          <h2>{{ github.name }}</h2>
+          <p>{{ github.login }}</p>
+        </div>
+      </div>
+      <div class="bio">
+        <p>{{ github.bio }}</p>
+      </div>
+      <div class="profile-reach">
+        <img [src]="profileIcon" /><span>{{ github.followers }} followers</span
+        ><span>{{ github.following }} following</span>
       </div>
     </div>
-    <div class="bio">
-      <p>{{ github.bio }}</p>
-    </div>
-    <div class="profile-reach">
-      <img [src]="profileIcon" /><span>{{ github.followers }} followers</span
-      ><span>{{ github.following }} following</span>
-    </div>
-  </div>
 
-  <div class="repositories" (click)="navigateToRepositoryList()">
-    <img [src]="repoIcon" />
-    <span class="repo-count">
-      <p>Repositories</p>
-      <p>{{ github.public_repos }}</p></span
-    >
+    <div class="repositories" (click)="navigateToRepositoryList()">
+      <img [src]="repoIcon" />
+      <span class="repo-count">
+        <p>Repositories</p>
+        <p>{{ github.public_repos }}</p></span
+      >
+    </div>
+  </ng-container>
+  <div class="loader" *ngIf="profileLoading">
+    <mat-spinner [diameter]="50"></mat-spinner>
   </div>
-</ng-container>
-<div class="loader" *ngIf="profileLoading">
-  <mat-spinner [diameter]="50"></mat-spinner>
 </div>

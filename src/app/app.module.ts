@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { GithubProfileComponent } from 'src/app/main/github-profile/components/github-profile/github-profile.component';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,11 +18,10 @@ import { GithubProfileComponent } from 'src/app/main/github-profile/components/g
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatSlideToggleModule,
-    MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    GithubProfileComponent
+    GithubProfileComponent,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
