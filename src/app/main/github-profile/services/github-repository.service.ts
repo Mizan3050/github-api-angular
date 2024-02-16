@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile';
@@ -35,6 +35,9 @@ export class GithubRepositoryService {
   }
 
   getListOfRepositories(): Observable<any> {
-    return this.http.get<any>(this.githubProfile.value?.repos_url)
+    return this.http.get<any>(this.githubProfile.value?.repos_url, {
+      params: new HttpParams()
+      .set('per_page', '5')
+    })
   }
 }
