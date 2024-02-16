@@ -13,6 +13,8 @@ import { catchError, of } from 'rxjs';
 })
 export class RepositoriesComponent {
 
+  githubProfile$ = this.githubRepositoryService.githubProfile$;
+
   constructor(
     private githubRepositoryService: GithubRepositoryService
   ) {

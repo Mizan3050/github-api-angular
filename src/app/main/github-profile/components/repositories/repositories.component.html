@@ -1,1 +1,18 @@
-<div class="repositories">{{ githubRepositories$ | async }}</div>
+<div class="repositories">
+  <p *ngIf="githubProfile$ | async as githubProfile">
+    {{ githubProfile.login }}
+  </p>
+  <h2>Repositories</h2>
+  <ng-container *ngIf="githubRepositories$ | async as githubRepositories">
+    <div
+      class="repository-detail"
+      *ngFor="let githubRepository of githubRepositories"
+    >
+      <h4>{{ githubRepository.name }}</h4>
+      <div class="detail">
+        <span> {{ githubRepository.stargazers_count }} </span>
+        <span>{{ githubRepository.language }}</span>
+      </div>
+    </div>
+  </ng-container>
+</div>
