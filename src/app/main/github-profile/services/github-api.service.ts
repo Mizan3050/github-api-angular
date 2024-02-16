@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile';
+import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile.interface';
 
 @Injectable({
   providedIn: 'root'

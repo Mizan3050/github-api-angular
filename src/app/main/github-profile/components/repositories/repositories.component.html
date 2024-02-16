@@ -16,7 +16,7 @@
           *ngFor="let githubRepository of githubRepositories"
         >
           <h4>{{ githubRepository.name }}</h4>
-          <p>{{githubRepository?.description}}</p>
+          <p>{{ githubRepository?.description }}</p>
           <div class="detail">
             <span class="stargazer"
               ><img [src]="startIcon" />
@@ -29,7 +29,8 @@
     </ng-container>
   </div>
   <div class="paginator">
-    <button>Previous</button>  <button>Next</button>
+    <button (click)="previousPage()">Previous</button>
+    <button (click)="nextPage()">Next</button>
   </div>
   <div class="loader" *ngIf="repositoriesLoading">
     <mat-spinner [diameter]="50"></mat-spinner>

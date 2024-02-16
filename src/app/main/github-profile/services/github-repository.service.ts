@@ -1,7 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
-import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile';
+import { PAGE_SIZE } from 'src/app/main/github-profile/constants/page-size.constant';
+import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile.interface';
+import { Repository } from 'src/app/main/github-profile/interface/repository.interface';
 import { GithubApiService } from './github-api.service'
 
 @Injectable({
@@ -34,10 +36,11 @@ export class GithubRepositoryService {
     }
   }
 
-  getListOfRepositories(): Observable<any> {
-    return this.http.get<any>(this.githubProfile.value?.repos_url, {
+  getListOfRepositories(pageIndex: number): Observable<Repository[]> {
+    return this.http.get<Repository[]>(this.githubProfile.value?.repos_url, {
       params: new HttpParams()
-      .set('per_page', '5')
+      .set('per_page', PAGE_SIZE.toString())
+      .set('page', pageIndex.toString())
     })
   }
 }

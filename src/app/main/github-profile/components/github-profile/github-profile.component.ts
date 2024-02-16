@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
-import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile';
+import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile.interface';
 import { GithubRepositoryService } from 'src/app/main/github-profile/services/github-repository.service';
 
 @Component({
