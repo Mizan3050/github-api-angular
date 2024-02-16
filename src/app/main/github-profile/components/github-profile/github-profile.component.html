@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="repositories">
+  <div class="repositories" (click)="navigateToRepositoryList()">
     <img [src]="repoIcon" />
     <span class="repo-count">
       <p>Repositories</p>
@@ -27,4 +27,3 @@
 <div class="loader" *ngIf="profileLoading">
   <mat-spinner [diameter]="50"></mat-spinner>
 </div>
-<router-outlet></router-outlet>
