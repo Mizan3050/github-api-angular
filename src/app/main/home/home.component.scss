@@ -1,4 +1,9 @@
 .main-container {
+  .description{
+    margin-top: 10px !important;
+    max-width: 400px;
+    color: rgb(80, 80, 80);
+  }
   h1 {
     font-size: 2rem;
   }
@@ -23,3 +28,10 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .description{
+    max-width: 300px;
+  }
+}
+
