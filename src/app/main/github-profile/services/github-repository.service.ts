@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { PAGE_SIZE } from 'src/app/main/github-profile/constants/page-size.constant';
@@ -18,7 +19,8 @@ export class GithubRepositoryService {
   constructor(
     private githubApiService: GithubApiService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   getGithubProfile(username: string): Observable<GithubProfile> {
@@ -33,6 +35,7 @@ export class GithubRepositoryService {
         }),
         catchError(error=>{
           this.githubProfile.next(null);
+          this.snackBar.open('Profile not found', 'x')
           this.router.navigateByUrl('home')
           return of(error)
         })
