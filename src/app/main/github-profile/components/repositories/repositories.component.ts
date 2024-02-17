@@ -24,7 +24,8 @@ export class RepositoriesComponent {
       }
     })
   );
-  startIcon = '/assets/images/icons/icons8-star-48.png'
+  startIcon = '/assets/images/icons/icons8-star-48.png';
+  notFoundImage = '/assets/images/core/3973481.jpg';
   repositoriesLoading = true;
   PAGE_SIZE = PAGE_SIZE;
   pageIndex = new BehaviorSubject<number>(1);
@@ -42,7 +43,7 @@ export class RepositoriesComponent {
         tap(() => {
           this.repositoriesLoading = false;
         }),
-        catchError(() => {
+        catchError((error) => {
           this.repositoriesLoading = false;
           return of([])
         })

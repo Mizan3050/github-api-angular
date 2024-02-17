@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { PAGE_SIZE } from 'src/app/main/github-profile/constants/page-size.constant';
 import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile.interface';
@@ -16,7 +17,8 @@ export class GithubRepositoryService {
 
   constructor(
     private githubApiService: GithubApiService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   getGithubProfile(username: string): Observable<GithubProfile> {
@@ -28,6 +30,11 @@ export class GithubRepositoryService {
           if (githubProfile) {
             this.githubProfile.next(githubProfile);
           }
+        }),
+        catchError(error=>{
+          this.githubProfile.next(null);
+          this.router.navigateByUrl('home')
+          return of(error)
         })
       );
     }

@@ -5,6 +5,11 @@ import { GithubProfileResolver } from 'src/app/main/github-profile/services/gith
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch:'full',
+    redirectTo: 'home'
+  },
+  {
     path: 'home',
     loadComponent:()=>import('./main/home/home.component').then(comp => comp.HomeComponent)
   },
@@ -15,14 +20,9 @@ const routes: Routes = [
   {
     path: ':username/repositories',
     resolve: {
-      githubProfile: GithubProfileResolver
+      githubProfile: GithubProfileResolver,
     },
     loadComponent: () => import('./main/github-profile/components/repositories/repositories.component').then(comp => comp.RepositoriesComponent)
-  },
-  {
-    path: '',
-    pathMatch:'full',
-    redirectTo: 'home'
   },
   {
     path: '**',

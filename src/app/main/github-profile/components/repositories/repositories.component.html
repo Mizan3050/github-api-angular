@@ -35,23 +35,28 @@
       </div>
     </ng-container>
   </div>
-  <p>Repositories {{ this.pageIndex.value * PAGE_SIZE }} of {{ repositoryCount }}</p>
-  <div class="paginator" [class.d-none]="repositoriesLoading">
-    <button
-      (click)="previousPage()"
-      [class.disabled]="(this.pageIndex.value - 1) * PAGE_SIZE <= 0"
-    >
-      Previous
-    </button>
-    <button
-      (click)="nextPage()"
-      [class.disabled]="
-        (this.pageIndex.value + 1) * PAGE_SIZE > this.repositoryCount
-      "
-    >
-      Next
-    </button>
-  </div>
+  <ng-container *ngIf="repositoryCount > 0 && !repositoriesLoading">
+    <p>
+      Repositories {{ this.pageIndex.value * PAGE_SIZE }} of
+      {{ repositoryCount }}
+    </p>
+    <div class="paginator" [class.d-none]="repositoriesLoading">
+      <button
+        (click)="previousPage()"
+        [class.disabled]="(this.pageIndex.value - 1) * PAGE_SIZE <= 0"
+      >
+        Previous
+      </button>
+      <button
+        (click)="nextPage()"
+        [class.disabled]="
+          (this.pageIndex.value + 1) * PAGE_SIZE > this.repositoryCount
+        "
+      >
+        Next
+      </button>
+    </div>
+  </ng-container>
   <div class="loader" *ngIf="repositoriesLoading">
     <mat-spinner [diameter]="50"></mat-spinner>
   </div>

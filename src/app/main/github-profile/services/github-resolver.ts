@@ -1,5 +1,5 @@
 import { inject } from "@angular/core";
-import { ResolveFn, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
 import { filter, first } from "rxjs";
 import { GithubProfile } from "src/app/main/github-profile/interface/github-profile.interface";
 import { GithubRepositoryService } from "src/app/main/github-profile/services/github-repository.service";
