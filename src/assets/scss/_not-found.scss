@@ -1,0 +1,22 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      width: 400px;
+    }
+    p {
+      margin-top: 20px;
+      color: blue;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .not-found {
+      img {
+        width: 300px;
+      }
+    }
+  }

@@ -1,24 +1,5 @@
-.not-found {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  margin-top: 50px;
-  img {
-    width: 400px;
-  }
-  p {
-    margin-top: 20px;
-    color: blue;
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-}
+@use '/src/assets/scss/not-found';
 
-@media only screen and (max-width: 600px) {
-  .not-found {
-    img {
-      width: 300px;
-    }
-  }
+.not-found{
+  margin-top: 50px;
 }

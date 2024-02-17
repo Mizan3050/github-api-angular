@@ -29,10 +29,10 @@
     </ng-container>
   </ng-container>
   <ng-container *ngIf="!profileLoading && !profileExist">
-    <div class="profile-not-found">
+    <div class="not-found">
       <h1>No profile found</h1>
       <img [src]="notFoundImage" alt="profile not found">
-      <p routerLink="'/home'" >Go back!!</p>
+      <p routerLink="/home" >Go back!!</p>
     </div>
   </ng-container>
   <div class="loader" *ngIf="profileLoading">

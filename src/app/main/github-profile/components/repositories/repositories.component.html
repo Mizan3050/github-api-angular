@@ -43,18 +43,25 @@
     <div class="paginator" [class.d-none]="repositoriesLoading">
       <button
         (click)="previousPage()"
-        [class.disabled]="(this.pageIndex.value - 1) * PAGE_SIZE <= 0"
+        [class.disabled]="(pageIndex.value - 1) * PAGE_SIZE <= 0"
       >
         Previous
       </button>
       <button
         (click)="nextPage()"
         [class.disabled]="
-          (this.pageIndex.value + 1) * PAGE_SIZE > this.repositoryCount
+          (pageIndex.value + 1) * PAGE_SIZE > repositoryCount
         "
       >
         Next
       </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!repositoriesLoading && repositoryCount <= 0">
+    <div class="not-found">
+      <h1>No repositories found</h1>
+      <img [src]="notFoundImage" alt="profile not found">
+      <p routerLink="/home" >Go back!!</p>
     </div>
   </ng-container>
   <div class="loader" *ngIf="repositoriesLoading">
