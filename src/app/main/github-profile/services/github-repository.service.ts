@@ -28,9 +28,6 @@ export class GithubRepositoryService {
           if (githubProfile) {
             this.githubProfile.next(githubProfile);
           }
-        }),
-        catchError((error) => {
-          return of(new Error(error) as any);
         })
       );
     }
