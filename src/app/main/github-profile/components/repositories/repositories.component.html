@@ -15,15 +15,17 @@
           class="repository-detail"
           *ngFor="let githubRepository of githubRepositories"
         >
-          <h4>{{ githubRepository.name }}</h4>
-          <p>{{ githubRepository?.description }}</p>
-          <div class="detail">
-            <span class="stargazer"
-              ><img [src]="startIcon" />
-              <p>{{ githubRepository.stargazers_count }}</p>
-            </span>
-            <span>{{ githubRepository.language }}</span>
-          </div>
+          <a [href]="githubRepository.html_url" target="_blank" rel="noopener noreferrer">
+            <h4>{{ githubRepository.name }}</h4>
+            <p>{{ githubRepository?.description }}</p>
+            <div class="detail">
+              <span class="stargazer"
+                ><img [src]="startIcon" />
+                <p>{{ githubRepository.stargazers_count }}</p>
+              </span>
+              <span>{{ githubRepository.language }}</span>
+            </div>
+          </a>
         </div>
       </div>
     </ng-container>
