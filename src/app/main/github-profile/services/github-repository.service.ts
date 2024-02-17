@@ -48,6 +48,8 @@ export class GithubRepositoryService {
       params: new HttpParams()
       .set('per_page', PAGE_SIZE.toString())
       .set('page', pageIndex.toString())
+      .set('sort', 'created')
+      .set('direction', 'desc')
     })
   }
 }
