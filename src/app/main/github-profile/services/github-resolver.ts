@@ -8,7 +8,7 @@ export const GithubProfileResolver: ResolveFn<GithubProfile> = (route: Activated
     const githubRepositoryService = inject(GithubRepositoryService);
     const username = route.paramMap.get('username');
     return githubRepositoryService.getGithubProfile(username).pipe(
-        filter(user => !!user.id),
+        filter(user => !!user?.id),
         first()
     )
 }
