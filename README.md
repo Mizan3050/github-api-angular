@@ -1,4 +1,4 @@
-# GithubApiAngular
+# Github Insights
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.0.
 
@@ -50,5 +50,5 @@ Directly access a profile by appending the GitHub username to the URL.
 Explore the detailed repository list associated with the selected GitHub profile.
 
 ## Technologies Used
-Angular
+Angular,
 GitHub API
