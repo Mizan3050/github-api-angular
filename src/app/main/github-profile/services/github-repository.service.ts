@@ -29,8 +29,8 @@ export class GithubRepositoryService {
             this.githubProfile.next(githubProfile);
           }
         }),
-        catchError(() => {
-          return of(null);
+        catchError((error) => {
+          return of(new Error(error) as any);
         })
       );
     }
