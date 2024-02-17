@@ -4,7 +4,10 @@
   <p class="description">{{ projectDescription }}</p>
   <div class="search-container">
     <form (submit)="searchProfile()" class="search-form">
-      <input [formControl]="searchControl" />
+      <div class="search-input">
+        <label for="search">Enter github profile</label>
+        <input tabindex="0" [formControl]="searchControl" id="search" placeholder="mizan3050" />
+      </div>
       <button (click)="searchProfile()">Search profile</button>
     </form>
   </div>
