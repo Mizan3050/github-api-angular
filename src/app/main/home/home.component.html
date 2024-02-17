@@ -2,7 +2,7 @@
   <h1>Github Insights</h1>
   <p>Bridging Your Projects with GitHub API</p>
   <div class="search-container">
-    <form (submit)="searchProfile()">
+    <form (submit)="searchProfile()" class="search-form">
       <input [formControl]="searchControl" />
       <button (click)="searchProfile()">Search profile</button>
     </form>

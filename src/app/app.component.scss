@@ -1,5 +1,14 @@
-mat-toolbar{
-    padding: 0 30px;
-    position: sticky;
-    top: 0;
+mat-toolbar {
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+
+  span {
+    padding: 5px 10px;
+  }
+  span:hover {
+    box-sizing: border-box;
+    background: rgb(227, 227, 227);
+    border-radius: 3px;
+  }
 }

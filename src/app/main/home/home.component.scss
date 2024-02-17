@@ -1,21 +1,25 @@
 .main-container {
   h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
-  input {
-    height: 30px;
-    width: 300px;
-    margin-top: 10px;
-    border: 2px solid rgb(94, 94, 94);
-    border-radius: 4px;
-  }
-  button {
-    margin-top: 10px;
-    height: 30px;
-    color: white;
-    background: rgb(0, 120, 184);
-    border: none;
-    border-radius: 4px;
-    width: 100px;
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    input {
+      height: 30px;
+      width: 300px;
+      margin-top: 15px;
+      border: 2px solid rgb(94, 94, 94);
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 10px;
+      height: 30px;
+      color: white;
+      background: rgb(0, 120, 184);
+      border: none;
+      border-radius: 4px;
+      width: 100px;
+    }
   }
 }
