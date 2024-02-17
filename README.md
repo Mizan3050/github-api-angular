@@ -32,8 +32,8 @@ https://github-api-angular-meezan.netlify.app/mizan3050
 ## Getting Started
 ### Clone the repository:
 
-git clone https://github.com/your-username/github-profile-explorer.git
-cd github-profile-explorer
+git clone https://github.com/Mizan3050/github-api-angular.git
+cd github-api-angular
 
 #### Install dependencies:
 
@@ -48,6 +48,7 @@ ng serve
 Use the search bar to find GitHub profiles.
 Directly access a profile by appending the GitHub username to the URL.
 Explore the detailed repository list associated with the selected GitHub profile.
+In order to see empty screen for repositories page, redirect to http://localhost:4200/mizan/repositories
 
 ## Technologies Used
 Angular,
