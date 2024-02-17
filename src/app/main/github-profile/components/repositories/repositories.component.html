@@ -1,21 +1,26 @@
 <div class="main-container">
   <div class="repositories" [class.d-none]="repositoriesLoading">
-    <p
-      *ngIf="githubProfile$ | async as githubProfile"
-      class="clickable link"
-      [routerLink]="['/' + githubProfile.login]"
-      routerLinkActive="router-link-active"
-    >
-      {{ githubProfile.login }}
-    </p>
-    <h2>Repositories</h2>
+    <ng-container *ngIf="githubProfile$ | async as githubProfile">
+      <p
+        class="clickable link"
+        [routerLink]="['/' + githubProfile.login]"
+        routerLinkActive="router-link-active"
+      >
+        {{ githubProfile.login }}
+      </p>
+      <h2>Repositories ({{ githubProfile?.public_repos }})</h2>
+    </ng-container>
     <ng-container *ngIf="githubRepositories$ | async as githubRepositories">
       <div class="repository-list">
         <div
           class="repository-detail"
           *ngFor="let githubRepository of githubRepositories"
         >
-          <a [href]="githubRepository.html_url" target="_blank" rel="noopener noreferrer">
+          <a
+            [href]="githubRepository.html_url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <h4>{{ githubRepository.name }}</h4>
             <p>{{ githubRepository?.description }}</p>
             <div class="detail">
@@ -30,9 +35,22 @@
       </div>
     </ng-container>
   </div>
+  <p>Repositories {{ this.pageIndex.value * PAGE_SIZE }} of {{ repositoryCount }}</p>
   <div class="paginator" [class.d-none]="repositoriesLoading">
-    <button (click)="previousPage()">Previous</button>
-    <button (click)="nextPage()">Next</button>
+    <button
+      (click)="previousPage()"
+      [class.disabled]="(this.pageIndex.value - 1) * PAGE_SIZE <= 0"
+    >
+      Previous
+    </button>
+    <button
+      (click)="nextPage()"
+      [class.disabled]="
+        (this.pageIndex.value + 1) * PAGE_SIZE > this.repositoryCount
+      "
+    >
+      Next
+    </button>
   </div>
   <div class="loader" *ngIf="repositoriesLoading">
     <mat-spinner [diameter]="50"></mat-spinner>
