@@ -28,7 +28,7 @@ describe('GithubApiService', () => {
   it('should return a GitHub profile when calling getGithubProfile', (done: DoneFn) => {
     const mockUsername = 'exampleUser';
     const mockProfile: GithubProfile = {
-      // Your mock profile data here
+
       login: "Mizan3050",
       id: 43161459,
       node_id: "MDQ6VXNlcjQzMTYxNDU5",
@@ -71,7 +71,6 @@ describe('GithubApiService', () => {
     const request = httpMock.expectOne(`https://api.github.com/users/${mockUsername}`);
     expect(request.request.method).toBe('GET');
 
-    // Respond with mock data
     request.flush(mockProfile);
   });
 
