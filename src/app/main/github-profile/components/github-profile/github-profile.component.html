@@ -28,7 +28,13 @@
       </div>
     </ng-container>
   </ng-container>
-  <h1 *ngIf="!profileLoading && !profileExist">No profile found</h1>
+  <ng-container *ngIf="!profileLoading && !profileExist">
+    <div class="profile-not-found">
+      <h1>No profile found</h1>
+      <img [src]="notFoundImage" alt="profile not found">
+      <p routerLink="'/home'" >Go back!!</p>
+    </div>
+  </ng-container>
   <div class="loader" *ngIf="profileLoading">
     <mat-spinner [diameter]="50"></mat-spinner>
   </div>

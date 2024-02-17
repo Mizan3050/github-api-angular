@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   searchControl = new FormControl('');
-
   private router = inject(Router);
 
   searchProfile() {

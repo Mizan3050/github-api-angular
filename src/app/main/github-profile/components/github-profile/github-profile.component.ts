@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile.interface';
 import { GithubRepositoryService } from 'src/app/main/github-profile/services/github-repository.service';
@@ -10,7 +10,7 @@ import { GithubRepositoryService } from 'src/app/main/github-profile/services/gi
 @Component({
   selector: 'app-github-profile',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, MatSnackBarModule],
+  imports: [CommonModule, MatProgressSpinnerModule, MatSnackBarModule, RouterModule],
   templateUrl: './github-profile.component.html',
   styleUrls: ['./github-profile.component.scss']
 })
@@ -19,6 +19,7 @@ export class GithubProfileComponent implements OnInit {
   username: string = '';
   profileIcon = '/assets/images/icons/icons8-test-account-30.png'
   repoIcon = '/assets/images/icons/icons8-bookmark-48.png'
+  notFoundImage = '/assets/images/core/9318688.jpg'
   profileLoading = true;
   profileExist = false;
 
