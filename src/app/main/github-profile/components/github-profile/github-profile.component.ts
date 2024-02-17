@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { GithubProfile } from 'src/app/main/github-profile/interface/github-profile.interface';
@@ -9,7 +10,7 @@ import { GithubRepositoryService } from 'src/app/main/github-profile/services/gi
 @Component({
   selector: 'app-github-profile',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, MatProgressSpinnerModule, MatSnackBarModule],
   templateUrl: './github-profile.component.html',
   styleUrls: ['./github-profile.component.scss']
 })
@@ -24,7 +25,8 @@ export class GithubProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private githubRepositoryService: GithubRepositoryService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.username = this.route.snapshot.paramMap.get('username');
   }
@@ -42,6 +44,7 @@ export class GithubProfileComponent implements OnInit {
       catchError((e) => {
         this.profileLoading = false;
         this.profileExist = false;
+        this.snackBar.open('Failed to load the profile', 'x')
         return of(null);
       })
     );
