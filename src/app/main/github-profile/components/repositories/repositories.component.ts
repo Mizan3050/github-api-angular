@@ -26,6 +26,7 @@ export class RepositoriesComponent {
   );
   startIcon = '/assets/images/icons/icons8-star-48.png';
   notFoundImage = '/assets/images/core/3973481.jpg';
+  githubIcon = '/assets/images/icons/github-mark.png'
   repositoriesLoading = true;
   PAGE_SIZE = PAGE_SIZE;
   pageIndex = new BehaviorSubject<number>(1);

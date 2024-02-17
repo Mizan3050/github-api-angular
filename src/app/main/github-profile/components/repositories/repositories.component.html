@@ -1,13 +1,16 @@
 <div class="main-container">
   <div class="repositories" [class.d-none]="repositoriesLoading">
     <ng-container *ngIf="githubProfile$ | async as githubProfile">
-      <p
-        class="clickable link"
-        [routerLink]="['/' + githubProfile.login]"
-        routerLinkActive="router-link-active"
-      >
-        {{ githubProfile.login }}
-      </p>
+      <div class="github-detail">
+        <img [src]="githubIcon" />
+        <h3
+          class="clickable"
+          [routerLink]="['/' + githubProfile.login]"
+          routerLinkActive="router-link-active"
+        >
+          {{ githubProfile.login }}
+      </h3>
+      </div>
       <h2>Repositories ({{ githubProfile?.public_repos }})</h2>
     </ng-container>
     <ng-container *ngIf="githubRepositories$ | async as githubRepositories">
@@ -49,9 +52,7 @@
       </button>
       <button
         (click)="nextPage()"
-        [class.disabled]="
-          (pageIndex.value + 1) * PAGE_SIZE > repositoryCount
-        "
+        [class.disabled]="(pageIndex.value + 1) * PAGE_SIZE > repositoryCount"
       >
         Next
       </button>
@@ -60,8 +61,8 @@
   <ng-container *ngIf="!repositoriesLoading && repositoryCount <= 0">
     <div class="not-found">
       <h1>No repositories found</h1>
-      <img [src]="notFoundImage" alt="profile not found">
-      <p routerLink="/home" >Go back!!</p>
+      <img [src]="notFoundImage" alt="profile not found" />
+      <p routerLink="/home">Go back!!</p>
     </div>
   </ng-container>
   <div class="loader" *ngIf="repositoriesLoading">
