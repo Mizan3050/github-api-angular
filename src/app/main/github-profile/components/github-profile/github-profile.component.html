@@ -27,8 +27,8 @@
         >
       </div>
     </ng-container>
-    <h1 *ngIf="!profileLoading && !github?.id">No profile found</h1>
   </ng-container>
+  <h1 *ngIf="!profileLoading && !profileExist">No profile found</h1>
   <div class="loader" *ngIf="profileLoading">
     <mat-spinner [diameter]="50"></mat-spinner>
   </div>

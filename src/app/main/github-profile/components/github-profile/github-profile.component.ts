@@ -39,9 +39,9 @@ export class GithubProfileComponent implements OnInit {
           this.profileExist = true;
         }
       }),
-      catchError(() => {
+      catchError((e) => {
         this.profileLoading = false;
-        this.profileExist = true;
+        this.profileExist = false;
         return of(null);
       })
     );
